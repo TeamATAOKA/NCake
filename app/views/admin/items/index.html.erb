@@ -1,0 +1,33 @@
+<div class="container">
+  <p id="notice"></p>
+  <div class="row">
+
+  <h1>商品一覧画面</h1>
+
+  <table class="table table-striped">
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税抜価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @items.each do |item| %>
+
+		<tr>
+			<td><%= item.id %></td>
+			<td><%= link_to item.name, _path(item.id) %></td>
+            <td><%= item.price %></td>
+            <td><%= genre.item.genre.name %></td>
+            <td><%= item.sales_status %></td>
+		</tr>
+		<% end %>
+		<%= paginate @items, class: "pagenate" %>
+	</tbody>
+  </table>
+  </div>
+</div>
