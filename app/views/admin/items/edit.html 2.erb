@@ -1,0 +1,44 @@
+<div class="container">
+  <p id="notice"></p>
+  <div class="row">
+
+  	<h2>商品編集画面</h2>
+  	  <!-- ルートの設定 -->
+  	  <%= form_for(@item) do |f| %>
+  	  <div class="col-xs-3">
+  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no-image.jpg" %>
+
+        <!-- 画像選択ボタン -->
+  	    <div class="field">
+  	  	  <%= f.label :image %>
+  	  	  <%= f.attachment_field :item_image, class: "col-xs-12 btn btn-primary "画像選択"" %>
+  	    </div>
+  	  </div>
+
+        <table class="table">
+  	  	  <div class="col-xs-9">
+		    <tr>
+			  <th>商品名</th>
+	    	  <th><%= f.text_field :name %></th>
+			</tr>
+			<tr>
+			  <th>商品説明</th>
+	    	  <th><%= f.text_area :text %></th>
+			</tr>
+			<tr>
+			  <th>ジャンル</th>
+	    	  <th><%= select_tag 'genre.name' ,options_for_select(@genre.name), class: "btn btn-info" %></th>
+			</tr>
+			<tr>
+			  <th>税抜価格</th>
+	    	  <th><%= f.integer_field :price %>円</th>
+			</tr>
+			<tr>
+			  <th>販売ステータス</th>
+	    	  <th><%= select_tag 'sales_status' ,options_for_select([['販売中', '1'], ['販売停止中', '2']]), class: "btn btn-info" %></th>
+		    </tr>
+	      </div>
+	    </table>
+	  <% end %>
+  </div>
+</div>
