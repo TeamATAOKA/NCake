@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>会員一覧画面</h2>
+		</div>
+		<div class="col-xs-9">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>氏名</th>
+						<th>メールアドレス</th>
+						<th>ステータス</th>
+						<th colspan="4"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td><%= user.id %></td>
+						<td><%= user.name %></td>
+						<td><%= user.email %></td>
+						<td><%= user.status %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
