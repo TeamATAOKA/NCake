@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <% if @user.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= @user.errors.count %> errors prohibited this book from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <div class="col-xs-3">
+
+      <h2>会員編集</h2>
+
+
+      <%= form_for(@user) do |f| %>
+
+      <div class="field">
+        <%= f.label :氏名 %>
+        <%= f.text_field :first_name %>
+        <%= f.text_field :last_name %>
+      </div>
+      <div class="field">
+        <%= f.label :フリガナ %>
+        <%= f.text_field :first_name_kana %>
+        <%= f.text_field :last_name_kana %>
+      </div>
+      <div class="field">
+        <%= f.label :郵便番号 %>
+        <%= f.text_area :postcode %>
+      </div>
+      <div class="field">
+        <%= f.label :住所 %>
+        <%= f.text_area :address %>
+      </div>
+      <div class="field">
+        <%= f.label :電話番号 %>
+        <%= f.text_area :phone %>
+      </div>
+      <div class="field">
+        <%= f.label :メールアドレス %>
+        <%= f.text_area :email %>
+      </div>
+      <div class="field">
+        <%= f.label :会員ステータス %>
+        <<%= form_with model: User.new, locale: true do |f| %>
+          <%= f.label :有効 %>
+          <%= f.radio_button :gender, 1 %>
+          <%= f.label :退会済み %>
+          <%= f.radio_button :status, 2 %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div class="actions">
+        <%= f.submit "変更を保存する" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
