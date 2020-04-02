@@ -4,9 +4,9 @@
 
   	<h2>商品新規登録画面</h2>
   	  <!-- ルートの設定 -->
-  	  <%= form_for(item, url: _path) do |f| %>
+  	  <%= form_for(item, url: admin_items_path) do |f| %>
   	  <div class="col-xs-3">
-  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no-image.jpg" %>
+  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no_image.jpg" %>
 
         <!-- 画像選択ボタン -->
   	    <div class="field">
