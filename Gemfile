@@ -70,3 +70,6 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 
 gem 'paranoia'
+
+gem 'kaminari','~> 1.1.1'
+
