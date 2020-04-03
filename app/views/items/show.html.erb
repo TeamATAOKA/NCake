@@ -1,2 +1,36 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+  <div class="col-xs-4">
+      <h2>ジャンル検索</h2>
+      <table class="table">
+      <% @genres.each do |genre| %>
+      <tr>
+          <td><%= genre.name %></td>
+      </tr>
+      <% end %>
+      </table>
+  </div>
+    <div class="col-xs-8">
+  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no-image.jpg" %>
+        <table class="table">
+		    <tr>
+	    	  <th><%= @item.name %></th>
+	    	</tr>
+	    	<tr>
+	    	  <th><%= @item.text %></th>
+	    	</tr>
+	    	<tr>
+	    	  <!--　税込にする計算式を記述 -->
+	    	  <th><%= @item.price %>(税込)</th>
+	    	</tr>
+	    	<tr>
+			  <th><%= form_for @cart_item, url: cart_item_path(@cart_item.id) do |f| %>
+                  <%= f.label :item_id %>
+                  <%= f.collection_select :item_id, Item.all, :id, :item.count,　:prompt => "個数選択" %>
+                  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+              </th>
+		    </tr>
+	    </table>
+	</div>
+  </div>
+</div>
