@@ -1,2 +1,31 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<%= simple_form_for @user do |f| %>
+  <% if @user.confirming.blank? %>
+    <%= f.input %>
+      <%= f.input :name, label: 'お名前' %>
+      <%= f.input :name, label: 'お名前' %>
+      <%= f.input :name, label: 'お名前' %>
+    <div class="actions">
+    <%= f.submit "確認画面へ進む", class: "btn btn-default pull-right" %>
+ 	</div>
+  <% else %>
+    <tabel>
+      <tr>
+        <th>お名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>お名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <th>お名前</th>
+        <td><%= @user.name %></td>
+      </tr>
+    </tabel>
+
+      <%= hidden_field :name, @user.name %>
+      <%= hidden_field :name, @user.name %>
+      <%= hidden_field :name, @user.name %>
+      <%= f.submit "購入を確定する", class: "btn btn-success pull-right" %>
+  <% end %>
+  <%= hidden_field :confirming, @user.name %>
