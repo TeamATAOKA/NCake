@@ -1,2 +1,24 @@
-<h1>Users#withdrawal</h1>
-<p>Find me in app/views/users/withdrawal.html.erb</p>
+
+<div class="container">
+
+	<div class="center-block">
+
+		<h2 class="text-center">本当に退会しますか？</h2>
+
+		<p class="text-center">退会すると、会員登録情報や</p>
+		<p class="text-center">これまでの購入履歴が閲覧できなくなります。</p>
+		<p class="text-center">退会する場合は、「退会する」をクリックしてください</p>
+
+
+			<div class="form-group row justify-content-center">
+				<div>
+					<%= link_to '退会しない', user_path(current_user), class: "btn btn-info", type: "button" %>
+					<%= link_to '退会する', current_user, data: { confirm: "本当に退会しますか？" }, method: :delete, class: "btn btn-danger", type: "button" %>
+				</div>
+			</div>
+			<!-- ボタンを中央揃え出来なかったので、ヘルプお願いしますm(_ _)m -->
+
+		</div>
+
+
+</div>
