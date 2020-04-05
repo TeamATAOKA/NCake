@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
       namespace :admin do
         resources :users, only: [:index, :show, :edit, :update] do
-          resources :orders, only: [:index, :show, :update]
+          resources :orders, only: [:show, :update]
           resources :order_items, only: [:update]
         end
       end
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show, :new, :create, :edit, :update]
     end
   namespace :admin do
+    resources :orders, only: [:index]
     resources :genres
   end
 

@@ -24,7 +24,7 @@
 
         <li><%= link_to "会員一覧" , admin_users_path %></li>
 
-        <li><%= link_to "注文履歴一覧", admin_user_orders_path%></li>
+        <li><%= link_to "注文履歴一覧", admin_orders_path%></li>
 
         <li><%= link_to "ジャンル管理" ,admin_genres_path%></li>
         <% end %>
@@ -53,7 +53,7 @@
           <li><%= current_user.name %></li>
           <li><%= link_to "マイページ", home_top_path%></li>
 
-          <li><%= link_to "商品一覧", items_path_path%></li>
+          <li><%= link_to "商品一覧", items_path%></li>
 
           <li><%= link_to "カート", user_cart_items_path%></li>
 
