@@ -5,12 +5,12 @@
   	  <!-- ルートの設定 -->
   	  <%= form_for(@item) do |f| %>
   	  <div class="col-xs-4">
-  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no-image.jpg" %>
+  	  <%= attachment_image_tag @item, :image, :fill, 100,100, fallback: "no_image.jpg" %>
 
         <!-- 画像選択ボタン -->
   	    <div class="field">
   	  	  <%= f.label :image %>
-  	  	  <%= f.attachment_field :item_image, class: "col-xs-12 btn btn-primary "画像選択"" %>
+  	  	  <%= f.attachment_field :image, class: "col-xs-12 btn btn-primary" %>
   	    </div>
   	  </div>
 
@@ -25,19 +25,21 @@
 	    	  <th><%= f.text_area :text %></th>
 			</tr>
 			<tr>
+			<!-- ジャンルが反映されない -->
 			  <th>ジャンル</th>
-	    	  <th><%= select_tag 'genre.name' ,options_for_select(@genre.name), class: "btn btn-info" %></th>
+	    	  <th><%= f.collection_select :genre_id, @genres, :id, :genre_name, class: "btn btn-info" %></th>
 			</tr>
 			<tr>
 			  <th>税抜価格</th>
-	    	  <th><%= f.integer_field :price %>円</th>
+	    	  <th><%= f.number_field :price %>円</th>
 			</tr>
 			<tr>
 			  <th>販売ステータス</th>
-	    	  <th><%= select_tag 'sales_status' ,options_for_select([['販売中', '1'], ['販売停止中', '2']]), class: "btn btn-info" %></th>
+	    	  <th><%= f.select :sale_status,options_for_select([['販売中', '販売中'], ['販売停止中', '販売停止中']]), class: "btn btn-info" %></th>
 		    </tr>
 	      </div>
 	    </table>
+	    <%= link_to "変更を保存", admin_items_path(@item), class: "btn btn-primary" %>
 	  <% end %>
   </div>
 </div>

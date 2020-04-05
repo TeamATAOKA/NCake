@@ -3,14 +3,14 @@
 
   	<h2>商品新規登録画面</h2>
   	  <!-- ルートの設定 -->
-  	  <%= form_for(item, url: admin_items_path) do |f| %>
+  	  <%= form_for(@item, url: admin_items_path) do |f| %>
   	  <div class="col-xs-4">
-  	  <%= attachment_image_tag item, :item_image, :fill, 100,100, fallback: "no_image.jpg" %>
+  	  <%= attachment_image_tag @item, :image, :fill, 100,100, fallback: "no_image.jpg" %>
 
         <!-- 画像選択ボタン -->
   	    <div class="field">
   	  	  <%= f.label :image %>
-  	  	  <%= f.attachment_field :item_image, class: "col-xs-12 btn btn-primary" %>
+  	  	  <%= f.attachment_field :image %>
   	    </div>
   	  </div>
 
@@ -26,18 +26,20 @@
 			</tr>
 			<tr>
 			  <th>ジャンル</th>
-	    	  <th><%= select_tag 'genre.name' ,options_for_select(@genre.name), class: "btn btn-info" %></th>
+	    	  <th><%= f.collection_select :genre_id, @genres, :id, :genre_name, class: "btn btn-info" %></th>
 			</tr>
 			<tr>
 			  <th>税抜価格</th>
-	    	  <th><%= f.integer_field :price %>円</th>
+	    	  <th><%= f.number_field :price %>円</th>
 			</tr>
 			<tr>
 			  <th>販売ステータス</th>
-	    	  <th><%= select_tag 'sales_status' ,options_for_select([['販売中', '1'], ['販売停止中', '2']]), class: "btn btn-info" %></th>
+	    	  <th><%= f.select :sale_status,options_for_select([['販売中', '販売中'], ['販売停止中', '販売停止中']]), class: "btn btn-info" %></th>
 		    </tr>
 	      </div>
 	    </table>
+		<%= f.submit '新規登録', class: "col-xs-4 btn btn-primary" %>
 	  <% end %>
+
   </div>
 </div>
