@@ -27,11 +27,12 @@
           <tbody>
             <% @items.each do |item| %>
               <div class="col-xs-2">
-              <%= attachment_image_tag(item, :image, :fill,80,80,fallback: "no_image.jpg" %><br>
+              <%= attachment_image_tag item, :image, :fill,80,80,fallback: "no_image.jpg" %><br>
               <%= item.name %><br>
               ¥<%= item.price %>
               </div>
             <% end %>
+            <%= link_to "もっと見る>", items_path %>
           </tbody>
         </div>
       </table>

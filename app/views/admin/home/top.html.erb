@@ -1,24 +1,11 @@
-<!-- 管理者ログイン画面　-->
 <div class="container">
   <p id="notice"></p>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
       </div>
-      <!-- ルート設定する -->
-      <%= form_for(resource, as: resource_email, url: admin_items_path(resource_email)) do |f| %>
-        <div class="field">
-      	  <%= f.label :"メールアドレス" %>
-      	  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
 
-        <div class="field">
-      	  <%= f.label :"パスワード" %>
-      	  <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
-      <% end %>
+      <h2>管理者画面</h2>
+      <!-- 当日オーダーのカウントとルートを設定する　-->
+      <a>本日の注文件数<%= link_to day.current.order.count, admin_orders_path %>件</a>
     </div>
 </div>

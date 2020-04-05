@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  root 'home#top'
   get 'home/top'
   get 'home/about'
   get 'home/thanks'
+  get 'admin/home/top'
   devise_for :users
   devise_for :admins
   get 'users/withdrawal', to: 'users#withdrawal'
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
     end
   namespace :admin do
     resources :orders, only: [:index]
-    resources :genres
+    resources :genres, only: [:index, :create, :edit, :update]
   end
 
   if Rails.env.development?
