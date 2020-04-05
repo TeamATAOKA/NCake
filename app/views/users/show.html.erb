@@ -1,12 +1,13 @@
 
 <body>
+	<h1>　マイページ　</h1>
 
-	<h2>会員詳細画面</h2>
+	<h2>登録情報</h2>
+<%= link_to '編集する',edit_admin_user_path(@user)%>
+<%=  link_to 'パスワードを変更',new_user_password_path%>
+
 	<table>
 		<thead>
-			<tr>
-				<th>顧客ID</th><td> @user.id  @user.user_status</td>
-			</tr>
 			<tr>
 				<th>氏名</th><td> @user.first_name @user.last_name </td>
 			</tr>
@@ -28,7 +29,7 @@
 		</thead>
 	</table>
 
-	<%= link_to '編集する', edit_admin_user_path(@user) %>
-	<%= link_to '注文履歴一覧を見る', admin_user_orders_path %>
+	<h2>配送先</h2><%= link_to '一覧を見る', user_posts_path %>
+	<h2>注文履歴一覧</h2><%= link_to '一覧を見る',admin_user_orders_path %>
 
 </body>
