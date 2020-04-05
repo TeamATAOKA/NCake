@@ -1,2 +1,41 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <h2>ジャンル検索</h2>
+      <table class="table">
+      <% @genres.each do |genre| %>
+      <tr>
+          <td><%= genre.name %></td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+
+      <div class="col-xs-8">
+      <table class="table">
+        <div class="top_phote">
+        <img src="no_image.jpg" />
+          <i class="">
+            ようこそ、NaganoCakeへ!<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会員登録が必要になります。
+          </i>
+        </div>
+        <h4>オススメ商品</h4>
+        <div class="row">
+          <tbody>
+            <% @items.each do |item| %>
+              <div class="col-xs-2">
+              <%= attachment_image_tag(item, :image, :fill,80,80,fallback: "no_image.jpg" %><br>
+              <%= item.name %><br>
+              ¥<%= item.price %>
+              </div>
+            <% end %>
+          </tbody>
+        </div>
+      </table>
+      </div>
+
+  </div>
+</div>

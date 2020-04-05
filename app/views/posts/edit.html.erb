@@ -1,2 +1,11 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+  <div class="col-xs-10 col-xs-offset-2">
+    <h2>配送先編集</h2>
+    <%= form_for(@post.user, url: @user_post_path) do |f| %>
+    	<%= f.label :postcode, "郵便番号(ハイフンなし)" %><%= f.text_field :postcode, class: "col-xs-2 user_postcode" %>
+        <%= f.label :address, "住所" %><%= f.text_field :address,class: "col-xs-2 user_address" %>
+        <%= f.label :name, "宛名" %><%= f.text_field :name, class: "col-xs-2 user_name" %><%= f.submit "編集する", class: "btn btn-primary col-xs-4" %>
+  </div>
+  </div>
+</div>
