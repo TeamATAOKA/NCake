@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
   <div class="col-xs-4 col-xs-offset-4">
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: admin_session_path(resource_name)) do |f| %>
       <div class="form-inputs">
       <div>メールアドレス<%= f.input :email,
                 required: false,

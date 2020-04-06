@@ -19,22 +19,25 @@
       <div id="navbarEexample7">
         <% if admin_signed_in? %>
         <li>LOGO</li>
-        <% else %>
+
         <li><%= link_to "商品一覧" , admin_items_path %></li>
 
         <li><%= link_to "会員一覧" , admin_users_path %></li>
 
-        <li><%= link_to "注文履歴一覧", admin_orders_path%></li>
+        <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
 
-        <li><%= link_to "ジャンル管理" ,admin_genres_path%></li>
-        <% end %>
+        <li><%= link_to "ジャンル管理" ,admin_genres_path %></li>
+
+         <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+         </li>
+
       </div>
     </div>
   </header>
 
   <!-- お客さんのヘッダー-->
 
-
+          <% elsif user_signed_in? %>
   <header>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -42,22 +45,24 @@
           <p class="navbar-brand">LOGO</p>
         </div>
         <div  id="navbarEexample7">
-          <% if user_signed_in? %>
+
+          <li><%#= current_user.name %></li>
+          <li><%= link_to "マイページ", home_top_path %></li>
+
+          <li><%= link_to "商品一覧", items_path %></li>
+
+          <li><%#= link_to "カート", user_cart_items_path%></li>
+
+          <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+
+          <% else %>
 
           <li><%= link_to "商品一覧" , items_path_path %></li>
 
           <li><%= link_to "新規登録" , new_user_registration_path %></li>
 
-          <li><%= link_to "ログイン", user_session_path%></li>
-          <% else %>
-          <li><%#= current_user.name %></li>
-          <li><%= link_to "マイページ", home_top_path%></li>
+          <li><%= link_to "ログイン", user_session_path %></li>
 
-          <li><%= link_to "商品一覧", items_path%></li>
-
-          <li><%#= link_to "カート", user_cart_items_path%></li>
-
-          <li><%= link_to "ログアウト", destroy_user_session_path%></li>
           <% end %>
 
         </div>
