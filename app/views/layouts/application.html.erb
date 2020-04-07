@@ -53,11 +53,11 @@
 
           <li><%#= link_to "カート", user_cart_items_path%></li>
 
-          <li><%= link_to "ログアウト", destroy_user_session_path %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 
           <% else %>
 
-          <li><%= link_to "商品一覧" , items_path_path %></li>
+          <li><%= link_to "商品一覧" , items_path %></li>
 
           <li><%= link_to "新規登録" , new_user_registration_path %></li>
 
