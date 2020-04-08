@@ -25,11 +25,12 @@
 	    	</tr>
 	    	<tr>
 			  <th><%= form_for @cart_item, url: user_cart_items_path(@user, @cart_item.id) do |f| %>
-                  <%= f.label :item_id %>
-                   <%#= f.collection_select :item_id, Item.all, :id, :item.count,　:prompt => "個数選択" %>
-                  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
-                  <% end %>
-              </th>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.label :item_id %>
+                   <%= f.collection_select :item_id, Item.all, :id, :item.count,　:prompt => "個数選択" %>
+            <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+            <% end %>
+        </th>
 		    </tr>
 
 	    </table>
