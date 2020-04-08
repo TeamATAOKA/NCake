@@ -1,15 +1,15 @@
 class CartItemsController < ApplicationController
   def index
-  	  @user = current.user
-  	  @item = Item.find(params[:item_id])
-  	  @cart_items = @user.cart_items
+  	  @user = current_user
+  	  @item = Item.find(params[:id])
+  	  @cart_item = @user.cart_items
   end
 
 
   def create
-      @cart_item = CartItem.new(params[:id])
+      @cart_item = CartItem.new
       @cart_item.save
-      redirect_to user_cart_items_path(@cart_item)
+      redirect_to user_cart_items_path
   end
 
   def update
@@ -23,4 +23,10 @@ class CartItemsController < ApplicationController
       @item.destroy
       redirect_back(fallback_location: root_path)
   end
+
+  private
+   def cart_item_params
+    params.require(:cart_item).permit(:item_id, :user_id, :item_count)
+  end
+
 end
