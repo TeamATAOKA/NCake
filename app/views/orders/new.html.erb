@@ -1,9 +1,9 @@
-<%= simple_form_for @user do |f| %>
-  <% if @user.confirming.blank? %>
-    <%= f.input %>
-      <%= f.input :name, label: 'お名前' %>
-      <%= f.input :name, label: 'お名前' %>
-      <%= f.input :name, label: 'お名前' %>
+<%= form_for @order, url:new_user_order_path do |f| %>
+  <%# if @order.confirming.blank? %>
+    <%= f.label :payment, :クレジットカード %>
+    <%= f.radio_button :payment, "クレジットカード" %></br>
+    <%= f.label :payment, :銀行振込 %>
+    <%= f.radio_button :payment, "銀行振込" %>
     <div class="actions">
     <%= f.submit "確認画面へ進む", class: "btn btn-default pull-right" %>
  	</div>
@@ -11,21 +11,22 @@
     <tabel>
       <tr>
         <th>お名前</th>
-        <td><%= @user.name %></td>
+        <td><%= @user.first_name %></td>
       </tr>
       <tr>
         <th>お名前</th>
-        <td><%= @user.name %></td>
+        <td><%= @user.first_name %></td>
       </tr>
       <tr>
         <th>お名前</th>
-        <td><%= @user.name %></td>
+        <td><%= @user.first_name %></td>
       </tr>
     </tabel>
 
-      <%= hidden_field :name, @user.name %>
-      <%= hidden_field :name, @user.name %>
-      <%= hidden_field :name, @user.name %>
+      <%= hidden_field :last_name, @user.last_name %>
+      <%= hidden_field :last_name, @user.last_name %>
+      <%= hidden_field :last_name, @user.last_name %>
       <%= f.submit "購入を確定する", class: "btn btn-success pull-right" %>
   <% end %>
-  <%= hidden_field :confirming, @user.name %>
+  <%# end %>
+  <%= hidden_field :confirming, @user.last_name %>
