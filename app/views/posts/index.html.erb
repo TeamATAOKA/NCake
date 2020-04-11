@@ -1,15 +1,25 @@
 <div class="container">
   <div class="row">
-  <div class="col-xs-8 col-xs-offset-4">
   	<h2>配送先登録 / 一覧</h2>
-    <%= form_for(@user, url: @user_post_path) do |f| %>
-    	<%= f.label :postcode, "郵便番号(ハイフンなし)" %><%= f.text_field :postcode, class: "col-xs-2 user_postcode" %>
-        <%= f.label :address, "住所" %><%= f.text_field :address,class: "col-xs-2 user_address" %>
-        <%= f.label :name, "宛名" %><%= f.text_field :name, class: "col-xs-2 user_name" %><%= f.submit "登録する", class: "btn btn-primary col-xs-4" %>
-  </div>
+      <%= form_for @post, url: user_posts_path do |f| %>
+      <table class="table">
+        <tr>
+          <th><%= f.label :postcode, "郵便番号(ハイフンなし)" %></th>
+          <th><%= f.text_field :postcode, class: "col-xs-12" %></th>
+        <tr>
+        <tr>
+          <th><%= f.label :address, "住所" %></th>
+          <th><%= f.text_field :address, class: "col-xs-12" %></th>
+        </tr>
+        <tr>
+          <th><%= f.label :name, "宛名" %></th>
+          <th><%= f.text_field :name, class: "col-xs-12" %></th>
+        </tr>
+      </table>
+      <%= f.submit "登録する", class: "btn btn-success col-xs-2 pull-right" %>
+      <% end %>
 
-    <div class="col-xs-10 col-xs-offset-2">
-	  <table class="table table-striped">
+	  <table class="table">
 		<thead>
 			<tr>
 				<th>郵便番号</th>
@@ -20,16 +30,22 @@
 		</thead>
 
 		<tbody>
-			<tr>
-				<td>@post.user.postcode</td>
-				<td>@post.user.address</td>
-				<td>@post.user.name</td>
-				<td><%= link_to "編集する",edit_user_post_path(@user_post.id), class: "btn-sm btn-primary" %>
-					<%= link_to "削除する", user_post_path(@user_post.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-			</tr>
-			<% end %>
+		  <tr>
+		    <td><%= @user.postcode %></td>
+		    <td><%= @user.address %></td>
+		    <td><%= @user.first_name%></td>
+		    <td><%= link_to "登録住所を変更する", edit_user_path(@user), class: "btn btn-primary col-xs-8" %>
+		  </tr>
+		  <tr>
+		  <% @posts.each do |post| %>
+            <td><%= post.postcode %></td>
+			<td><%= post.address %></td>
+			<td><%= post.name %></td>
+			<td><%= link_to "編集はこちら",edit_user_post_path(post.user_id,post.id), class: "btn-sm btn-primary col-xs-4 text-center" %>
+				<%= link_to "削除はこちら", user_post_path(post.user_id,post.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger col-xs-4 text-center" %></td>
+		  </tr>
+		  <% end %>
 		</tbody>
 	  </table>
-	</div>
   </div>
 </div>
