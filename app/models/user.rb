@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :cart_items
   has_many :order
   has_many :post
+  def name
+		first_name + last_name
+  end
 end

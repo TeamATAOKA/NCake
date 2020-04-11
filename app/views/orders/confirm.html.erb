@@ -33,10 +33,17 @@
     </tbody>
 	</table>
 	<table>
-
-		<!-- メンター案件？？　-->
-      支払い方法<%= @order.payment %>
-      お届け先<%#= @order.post.postcode %>
+		<thead>
+			<tr>
+				<th>お支払い方法</th>
+				<th><%= @order.payment %></th>
+			</tr>
+		</thead>
+		<tbody>
+			<th>お届け先</th>
+			<th><%= @order.postcode %><%= @order.address %></br>
+				<%= @order.name %></th>
+		</tbody>
     </table>
       <%= link_to "購入を確定する", home_thanks_path, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
       <%= link_to "戻る", new_user_order_path, class: "col-xs-6 col-xs-offset-3 btn btn-danger" %>
