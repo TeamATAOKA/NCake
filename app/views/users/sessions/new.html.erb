@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-  <div class="col-xs-4 col-xs-offset-4">
-    <h2>会員の方はこちらからログイン</h2>
+  <div class="col-xs-8 col-xs-offset-2">
+    <h4>会員の方はこちらからログイン</h4>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
       <div>メールアドレス<%= f.input :email,
@@ -13,18 +13,16 @@
                 required: false,
                 input_html: { autocomplete: "current-password" }, label: false %>
       </div>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
       <div class="form-actions">
+              <!-- ルーティングを記述 -->
+        <h6><%= link_to "=>パスワードを忘れた方はこちら", class: "col-xs-offset-left4" %></h6>
         <%= f.button :submit, "ログイン", class: "btn btn-primary" %>
-      <!-- ルーティングを記述 -->
-      <%= link_to "=>パスワードを忘れた方はこちら" %>
       </div>
       <% end %>
-      <h2>登録がお済みでない方</h2>
+      <h4>登録がお済みでない方</h4>
       <a><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</a>
   </div>
   </div>
 </div>
-<%= render "users/shared/links" %>

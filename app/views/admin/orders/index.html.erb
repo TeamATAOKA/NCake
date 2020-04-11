@@ -1,30 +1,28 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<h2>注文一覧画面</h2>
-		</div>
-		<div class="col-xs-9">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>購入日時</th>
-						<th>購入者</th>
-						<th>注文個数</th>
-						<th>注文ステータス</th>
-					</tr>
-				</thead>
+  <div class="row">
+	<h3>注文一覧画面</h3>
+	<div class="col-xs-10 col-xs-offset-1">
+	  <table class="table">
+		<thead>
+		  <tr>
+			<th>購入日時</th>
+			<th>購入者</th>
+			<th>注文個数</th>
+			<th>注文ステータス</th>
+		  </tr>
+		</thead>
 
-				<tbody>
-					<% @orders.each do |order| %>
-					<tr>
-						<td><%= order.created_at %></td>
-						<td><%= order.user.name %></td>
-						<td><%= order.count %></td>
-						<td><%= order.order_status %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
+		<tbody>
+		  <% @orders.each do |order| %>
+			<tr>
+			  <td><%= order.created_at %></td>
+			  <td><%= order.user.name %></td>
+			  <td><%= order.count %></td>
+			  <td><%= order.order_status %></td>
+			</tr>
+		  <% end %>
+		</tbody>
+	  </table>
 	</div>
+  </div>
 </div>

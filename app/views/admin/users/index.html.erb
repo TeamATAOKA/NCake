@@ -1,33 +1,30 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<h2>会員一覧画面</h2>
-		</div>
-	<div class="row">
-		<div class="col-xs-6 col-xs-offset-3">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>氏名</th>
-						<th>メールアドレス</th>
-						<th>ステータス</th>
-						<th colspan="4"></th>
-					</tr>
-				</thead>
+  <div class="row">
+	<h3>会員一覧画面</h3>
+	<div class="col-xs-10 col-xs-offset-1">
+	  <table class="table">
+		<thead>
+		  <tr>
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+			<th colspan="4"></th>
+		  </tr>
+		</thead>
 
-				<tbody>
-					<% @users.each do |user| %>
-					<tr>
-						<td><%= user.id %></td>
-						<td><%= user.first_name %><%= user.last_name %></td>
-						<td><%= user.email %></td>
-						<td><%= user.user_status %></td>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
+		<tbody>
+		  <% @users.each do |user| %>
+			<tr>
+			  <td><%= user.id %></td>
+			  <td><%= link_to user.first_name, admin_user_path(user.id) %></td>
+			  <td><%= user.email %></td>
+			  <td><%= user.user_status %></td>
+			</tr>
+		  <% end %>
+		  <%#= paginate @users, class: "pagenate" %>
+		</tbody>
+	  </table>
 	</div>
-	</div>
+  </div>
 </div>
