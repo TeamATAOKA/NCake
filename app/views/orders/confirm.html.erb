@@ -2,7 +2,6 @@
   <div class="row">
   <div class="col-xs-10 col-xs-offset-2">
     <a>ショッピングカート</a>
-    <%= link_to "カートを空にする", destroy_all_user_cart_items_path(@cart_item), method: :delete, class: "btn btn-danger" %>
     <table class="table table-striped">
 	<thead>
 		<tr>
@@ -25,18 +24,23 @@
 			<% @sum += (cart_item.item_count * cart_item.item.price * 1.08).to_i %></td>
 		</tr>
 	  <% end %>
-	  </table>
       <div class="total_price">
       合計金額
       </div>
       <div class="total_price_view">
        <%= (@sum).to_i %>
       </div>
-      支払い方法<%= order.payment %>
-      お届け先<%= @order.post.postcode %>
-      <%= link_to "購入を確定する", thanks_home_path, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
-	</tbody>
+    </tbody>
+	</table>
+	<table>
+
+		<!-- メンター案件？？　-->
+      支払い方法<%= @order.payment %>
+      お届け先<%#= @order.post.postcode %>
     </table>
+      <%= link_to "購入を確定する", home_thanks_path, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
+      <%= link_to "戻る", new_user_order_path, class: "col-xs-6 col-xs-offset-3 btn btn-danger" %>
+
   </div>
   </div>
 </div>
