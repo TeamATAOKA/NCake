@@ -1,35 +1,38 @@
-
+<div class="container">
+  <div class="row">
 <body>
-	<h1>　マイページ　</h1>
+	<h1>マイページ</h1>
 
 	<h2>登録情報</h2>
-<%= link_to '編集する',edit_admin_user_path(@user)%>
-<%=  link_to 'パスワードを変更',new_user_password_path%>
+<%= link_to '編集する',edit_admin_user_path(@user),class: "btn btn-primary"%>
+<%=  link_to 'パスワードを変更',new_user_password_path ,class: "btn btn-primary"%>
 
-	<table>
+	<table class="table">
 		<thead>
 			<tr>
-				<th>氏名</th><td> @user.first_name @user.last_name </td>
+				 <th>氏名</th><td><%= @user.first_name %></td>
 			</tr>
 			<tr>
-				<th>フリガナ</th><td> @user.first_name_kana @user.last_name_kana </td>
+				<th>フリガナ</th><td><%= @user.first_name_kana %></td>
 			</tr>
 			<tr>
-				<th>郵便番号</th><td> @user.postcode </td>
+				<th>郵便番号</th><td><%= @user.postcode %></td>
 			</tr>
 			<tr>
-				<th>住所</th><td> @user.address </td>
+				<th>住所</th><td><%= @user.address %></td>
 			</tr>
 			<tr>
-				<th>電話番号</th><td> まだ電話番号カラムがありません </td>
+				<th>電話番号</th><td><%= @user.phone_number %></td>
 			</tr>
 			<tr>
-				<th>メールアドレス</th><td> @user.email </td>
+				<th>メールアドレス</th><td><%= @user.email %></td>
 			</tr>
 		</thead>
 	</table>
 
-	<h2>配送先</h2><%= link_to '一覧を見る', user_posts_path %>
-	<h2>注文履歴一覧</h2><%= link_to '一覧を見る',admin_user_orders_path %>
+	<h2>配送先</h2><%= link_to '一覧を見る', user_posts_path(@user),class: "btn btn-primary"%>
+	<h2>注文履歴一覧</h2><%= link_to '一覧を見る', user_orders_path(@user),class: "btn btn-primary" %>
 
 </body>
+  </div>
+</div>
