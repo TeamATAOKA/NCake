@@ -10,12 +10,14 @@ class OrdersController < ApplicationController
   def new
       @order = Order.new
       @user = current_user
+      @posts = Post.all
   end
 
   def create
       @order = Order.build(order_params)
       respond_to do |format|
         if @order.save
+           @post =Post.new
            format.html (redirect_to home_thanks_path)
         else
            format.html (render action: 'new')
@@ -25,7 +27,6 @@ class OrdersController < ApplicationController
 
   def confirm
     @user = current_user
-    @post = Post.new
   end
 
   def update
@@ -34,6 +35,6 @@ class OrdersController < ApplicationController
   end
 private
   def confirm_params
-   @order = Order.new(params.require(:order).permit(:name, :user_id, :address, :payment, :postage))
+   @order = Order.new(params.require(:order).permit(:postcode, :name, :user_id, :address, :payment, :postage))
   end
 end
