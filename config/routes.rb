@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'home/about'
   get 'home/thanks'
   get 'admin/home/top'
+  get 'users/:user_id/order/confirm' => 'orders#confirm', as: 'confirm'
   devise_for :users
   devise_for :admins
   get 'users/withdrawal', to: 'users#withdrawal'
