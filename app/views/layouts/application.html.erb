@@ -7,18 +7,23 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
 </head>
 
 <body>
  <header>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default" style="background-color: #EEE8AA; margin-bottom: 0px;">
     <div class="container-field">
       <div class="navbar-header">
         <p class="navbar-brand"></p>
       </div>
       <div id="navbarEexample7">
+      <a class="navbar-logo" href="/" style="background-color: #EEE8AA;">
+        <%= image_tag('logo.jpg') %>
+      </a>
+      <ul class="nav navbar-nav navbar-right" style="padding-right: 20px;">
         <% if admin_signed_in? %>
-        <li>LOGO</li>
 
         <li><%= link_to "商品一覧" , admin_items_path %></li>
 
@@ -28,46 +33,57 @@
 
         <li><%= link_to "ジャンル管理" ,admin_genres_path %></li>
 
-         <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
          </li>
 
-      </div>
-
-      <% elsif current_page?(new_admin_session_path) %>
-      <div class="navbar-header">
-          <p class="navbar-brand">LOGO</p>
-      </div>
-
+        <% elsif current_page?(new_admin_session_path) %>
   <!-- お客さんのヘッダー-->
+        <% elsif user_signed_in? %>
 
-      <% elsif user_signed_in? %>
-        <div class="navbar-header">
-          <p class="navbar-brand">LOGO</p>
-        </div>
-        <div  id="navbarEexample7">
+        <p class="navbar-text">ようこそ  <%= current_user.first_name %>  さん。</p>
 
-          <li><%#= current_user.name %></li>
-          <li><%= link_to "マイページ", home_top_path %></li>
+        <li><%= link_to "マイページ", user_path(current_user.id) %></li>
 
-          <li><%= link_to "商品一覧", items_path %></li>
+        <li><%= link_to "商品一覧", items_path %></li>
 
-          <li><%#= link_to "カート", user_cart_items_path%></li>
+        <li><%#= link_to "カート", user_cart_items_path%></li>
 
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 
-          <% else %>
+        <% else %>
 
-          <li><%= link_to "商品一覧" , items_path %></li>
+        <p class="navbar-text">ようこそ  ゲスト  さん。<p>
 
-          <li><%= link_to "新規登録" , new_user_registration_path %></li>
+        <li><%= link_to "商品一覧" , items_path %></li>
 
-          <li><%= link_to "ログイン", user_session_path %></li>
-          <% end %>
+        <li><%= link_to "新規登録" , new_user_registration_path %></li>
 
-        </div>
+        <li><%= link_to "ログイン", user_session_path %></li>
+
+        <% end %>
+      </ul>
+      </div>
       </div>
     </nav>
     </header>
+    <div class="" style="background-color: #FDF5E6; padding-top: 20px;">
     <%= yield %>
-  </body>
-  </html>
+
+    <footer class="footer">
+    <div class="container">
+
+      <div class="row">
+      <%= link_to home_about_path do %>
+      <span class='pull-right'>
+        <%= image_tag('logo2.jpg') %>
+      </span>
+      <% end %>
+      <div class='col-xs-6 col-xs-offset-6'>
+      <p>powered by チームあたおか</p>
+      </div>
+      </div>
+    </div>
+    </footer>
+  </div>
+</body>
+</html>

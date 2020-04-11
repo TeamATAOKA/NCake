@@ -10,53 +10,66 @@
       </ul>
     </div>
     <% end %>
-    <div class="col-xs-3">
 
-      <h2>会員編集</h2>
+    <h2>会員編集画面</h2>
 
-
-      <%= form_for(@user) do |f| %>
-
+    <table class="table">
+      <%= form_for(@user, url: admin_user_path) do |f| %>
       <div class="field">
-        <%= f.label :氏名 %>
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
+        <tr>
+          <th><%= f.label :氏名 %></th>
+          <th><%= f.text_field :first_name %></th>
+          <th><%= f.text_field :last_name %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :フリガナ %>
-        <%= f.text_field :first_name_kana %>
-        <%= f.text_field :last_name_kana %>
+        <tr>
+          <th><%= f.label :フリガナ %></th>
+          <th><%= f.text_field :first_name_kana %></th>
+          <th><%= f.text_field :last_name_kana %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :郵便番号 %>
-        <%= f.text_area :postcode %>
+        <tr>
+          <th><%= f.label :郵便番号 %></th>
+          <th><%= f.text_field :postcode %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :住所 %>
-        <%= f.text_area :address %>
+        <tr>
+          <th><%= f.label :住所 %></th>
+          <th><%= f.text_field :address %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :電話番号 %>
-        <%= f.text_area :phone_number %>
+        <tr>
+          <th><%= f.label :電話番号 %></th>
+          <th><%= f.text_field :phone_number %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :メールアドレス %>
-        <%= f.text_area :email %>
+        <tr>
+          <th><%= f.label :メールアドレス %></th>
+          <th><%= f.email_field :email %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :会員ステータス %>
-        <<%= form_with model: User.new, locale: true do |f| %>
-          <%= f.label :有効 %>
-          <%= f.radio_button :status, 1 %>
-          <%= f.label :退会済み %>
-          <%= f.radio_button :status, 2 %>
-          <%= f.submit %>
-        <% end %>
+        <%#= f.label :会員ステータス %>
+        <%#= form_with model: User.new, locale: true do |f| %>
+          <%#= f.label :有効 %>
+          <%#= f.radio_button :status, 1 %>
+          <%#= f.label :退会済み %>
+          <%#= f.radio_button :status, 2 %>
+          <%#= f.submit %>
+        <%# end %>
       </div>
       <div class="actions">
-        <%= f.submit "変更を保存する" %>
+        <tr>
+          <th><%= f.submit "変更を保存する", class: "btn btn-primary" %></th>
+        </tr>
       </div>
       <% end %>
-    </div>
+    </table>
+
   </div>
 </div>

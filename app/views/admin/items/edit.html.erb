@@ -9,20 +9,18 @@
 
         <!-- 画像選択ボタン -->
   	    <div class="field">
-  	  	  <%= f.label :image %>
-  	  	  <%= f.attachment_field :image, class: "col-xs-12 btn btn-primary" %>
+  	  	  <%= f.attachment_field :image %>
   	    </div>
   	  </div>
-
+        <div class="col-xs-8">
         <table class="table">
-  	  	  <div class="col-xs-8">
 		    <tr>
 			  <th>商品名</th>
-	    	  <th><%= f.text_field :name %></th>
+	    	  <th><%= f.text_field :name, class: "col-xs-10" %></th>
 			</tr>
 			<tr>
 			  <th>商品説明</th>
-	    	  <th><%= f.text_area :text %></th>
+	    	  <th><%= f.text_area :text, class: "col-xs-10" %></th>
 			</tr>
 			<tr>
 			<!-- ジャンルが反映されない -->
@@ -31,7 +29,7 @@
 			</tr>
 			<tr>
 			  <th>税抜価格</th>
-	    	  <th><%= f.number_field :price %>円</th>
+	    	  <th><%= f.text_field :price, class: "col-xs-10"%>円</th>
 			</tr>
 			<tr>
 			  <th>販売ステータス</th>
@@ -39,7 +37,7 @@
 		    </tr>
 	      </div>
 	    </table>
-	    <%= f.submit "変更を保存",  class: "btn btn-primary" %>
+	    <%= f.submit "変更を保存",  class: "col-xs-4 btn btn-primary pull-right" %>
 	  <% end %>
   </div>
 </div>
