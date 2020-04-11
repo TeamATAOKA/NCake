@@ -40,19 +40,19 @@
   <!-- お客さんのヘッダー-->
         <% elsif user_signed_in? %>
 
-        <p class="navbar-text">ようこそ  <%= current_user.first_name %>  さん。</p>
+        <p class="navbar-text" style="font-size: 20px; font-family: Hannari;">ようこそ  <%= current_user.first_name %>  さん。</p>
 
         <li><%= link_to "マイページ", user_path(current_user.id) %></li>
 
         <li><%= link_to "商品一覧", items_path %></li>
 
-        <li><%#= link_to "カート", user_cart_items_path%></li>
+        <li><%= link_to "カート", user_cart_items_path(current_user.id) %></li>
 
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 
         <% else %>
 
-        <p class="navbar-text">ようこそ  ゲスト  さん。<p>
+        <p class="navbar-text" style="font-size: 20px; font-family: Hannari;">ようこそ  ゲスト  さん。</p>
 
         <li><%= link_to "商品一覧" , items_path %></li>
 

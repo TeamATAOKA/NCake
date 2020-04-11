@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-2">
+    <div class="col-xs-3">
       <h4>ジャンル検索</h4>
       <table class="table">
         <% @genres.each do |genre| %>
@@ -10,10 +10,10 @@
         <% end %>
       </table>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-3">
      <%= attachment_image_tag @item, :image, :fill, 100,100, fallback: "no_image.jpg" %>
    </div>
-   <div class="col-xs-3">
+   <div class="col-xs-6">
     <table class="table">
       <tr>
         <th><%= @item.name %></th>
@@ -26,14 +26,14 @@
         <th><%= @item.price %>(税込)</th>
       </tr>
       <tr>
+       <% if user_signed_in? %>
        <th><%= form_for @cart_item, url: user_cart_items_path(@user, @cart_item.id) do |f| %>
-        <div class="col-xs-3">
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.label :item_id %>
-        </div>
         <%= f.select :item_count,options_for_select((1..10)), class: "btn btn-info" %>
         <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       </div>
+      <% end %>
       <% end %>
     </th>
   </tr>
