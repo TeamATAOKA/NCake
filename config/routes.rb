@@ -2,18 +2,12 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'home/top'
   get 'home/about'
-  get 'home/thanks'
   get 'admin/home/top'
   devise_for :users
   devise_for :admins
   get 'users/withdrawal', to: 'users#withdrawal'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users,  only: [:edit, :show, :update] do
-    resources :orders, only: [:index, :show, :new, :create] do
-    collection do
-        post :confirm
-      end
-    end
     resources :order_items, only: [:create]
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
@@ -22,7 +16,12 @@ Rails.application.routes.draw do
     end
     resources :posts
   end
-
+    resources :orders, only: [:index, :show, :new, :create] do
+    collection do
+        get :confirm
+        get :done
+      end
+    end
       namespace :admin do
         resources :users, only: [:index, :show, :edit, :update] do
           resources :orders, only: [:show, :update]

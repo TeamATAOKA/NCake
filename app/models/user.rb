@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
-  has_many :order
-  has_many :post
+  has_many :orders
+  has_many :posts
   def name
 		first_name + last_name
   end
