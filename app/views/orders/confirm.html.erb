@@ -1,53 +1,52 @@
 <div class="container">
   <div class="row">
-  <div class="col-xs-10 col-xs-offset-2">
-    <a>ショッピングカート</a>
-    <table class="table table-striped">
+  <div class="col-xs-10 col-xs-offset-1">
+    <p>ショッピングカート</p>
+    <table class="table">
 	<thead>
 		<tr>
 			<th>商品</th>
 			<th>単価(税込)</th>
 			<th>数量</th>
 			<th>小計</th>
-			<th></th>
 		</tr>
 	</thead>
 
 	<tbody>
 	  <% @sum = 0 %>
-  	  <% @user.cart_items.each do |cart_item| %>
+  	  <% @cart_item.each do |cart_item| %>
 		<tr>
 			<td><%= attachment_image_tag(cart_item.item, :image, :fill,40,40,fallback: "no_image.jpg") %><%= cart_item.item.name %></td>
-			<td>¥<%= (cart_item.item.price * 1.08).to_i %>
-			</td>
+			<td><%= (cart_item.item.price * 1.08).to_i %></td>
+			<td><%= cart_item.item_count %></td>
 			<td><%= (cart_item.item_count * cart_item.item.price * 1.08).to_i %>
 			<% @sum += (cart_item.item_count * cart_item.item.price * 1.08).to_i %></td>
 		</tr>
 	  <% end %>
-      <div class="total_price">
-      合計金額
-      </div>
-      <div class="total_price_view">
-       <%= (@sum).to_i %>
-      </div>
     </tbody>
 	</table>
+	<div class="total_price" style="float: right;">
+	<p>送料<%= session[:order][:postage] %></p>
+	<p>商品合計<%= (@sum).to_i %></p>
+    <p>請求金額<%= (@sum + session[:order][:postage]).to_i %></p>
+    <% session[:order][:total_price] = @sum + session[:order][:postage].to_i %>
+    </div>
 	<table>
 		<thead>
 			<tr>
 				<th>お支払い方法</th>
-				<th><%= @order.payment %></th>
+				<th><%= session[:order]["payment"] %></th>
 			</tr>
 		</thead>
 		<tbody>
 			<th>お届け先</th>
-			<th><%= @order.postcode %><%= @order.address %></br>
-				<%= @order.name %></th>
+			<th><%= session[:order]["name"] %></br>
+				<%= session[:order]["address"] %>
+				<%= session[:order]["postcode"] %></th>
 		</tbody>
     </table>
-      <%= link_to "購入を確定する", home_thanks_path, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
-      <%= link_to "戻る", new_user_order_path, class: "col-xs-6 col-xs-offset-3 btn btn-danger" %>
-
+      <%= link_to "購入を確定する", done_orders_path, class: "col-xs-6 col-xs-offset-3 btn btn-success" %>
+      <%= link_to "戻る", new_order_path, class: "col-xs-6 col-xs-offset-3 btn btn-danger" %>
   </div>
   </div>
 </div>

@@ -1,29 +1,35 @@
-<%= form_for @order, url:confirm_user_orders_path do |f| %>
+<div class="container">
+<div class="row">
+<h2>注文情報入力</h2>
+<%= form_with url:orders_path do |f| %>
+  <h3>支払方法</h3>
     <%= f.label :payment, :クレジットカード %>
-    <%= f.radio_button :payment, "クレジットカード" %></br>
+    <%= f.radio_button :payment_option, 1 %></br>
     <%= f.label :payment, :銀行振込 %>
-    <%= f.radio_button :payment, "銀行振込" %></br>
-
+    <%= f.radio_button :payment_option, 2 %></br>
+  <h3>お届け先</h3>
     <%= f.label :address, :ご自身の住所 %>
-    <%= f.radio_button :address, "ご自身の住所" %></br>
+    <%= f.radio_button :address_option, 1 %></br>
     <%= @user.postcode %><%= @user.address %></br>
     <%= @user.name %></br>
 
     <%= f.label :address, :登録済み住所から選択 %>
-    <%= f.radio_button :address, "登録済み住所から選択" %></br>
+    <%= f.radio_button :address_option, 2 %></br>
     <%= f.collection_select :id, @posts, :id, :full_address, class: "btn btn-info" %></br>
 
     <%= f.label :address, :新しいお届け先 %>
-    <%= f.radio_button :address, "新しいお届け先" %></br>
-    <p>郵便番号(ハイフンなし)</p>
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %></br>
-    <p>住所</p>
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %></br>
-    <p>宛名</p>
-    <%= f.text_field :name, autofocus: true, autocomplete: "postcode" %></br>
+    <%= f.radio_button :address_option, 3 %></br>
+    <p>郵便番号(ハイフンなし)
+    <%= f.text_field :new_postcode, autofocus: true, autocomplete: "postcode", class: "col-xs-8 pull-right" %></p></br>
+    <p>住所
+    <%= f.text_field :new_address, autofocus: true, autocomplete: "address", class: "col-xs-8 pull-right" %></p></br>
+    <p>宛名
+    <%= f.text_field :new_name, autofocus: true, autocomplete: "postcode", class: "col-xs-8 pull-right" %></p></br>
     <div class="actions">
-    <%= f.submit "確認画面へ進む", class: "btn btn-default pull-right" %>
+    <%= f.submit "確認画面へ進む", class: "btn btn-primary col-xs-4 col-xs-offset-4" %>
  	  </div>
 <% end %>
+</div>
+</div>
 
 <!-- データ保持されない、新住所を登録したい場合はどうすればいいか -->
