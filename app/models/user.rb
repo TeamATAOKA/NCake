@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def name
 		first_name + last_name
   end
+
+  #会員ステータスのデフォルト値を設定
+  attribute :user_status, :string, default: '有効'
+
 end
