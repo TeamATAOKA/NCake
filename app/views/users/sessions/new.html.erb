@@ -17,7 +17,7 @@
 
       <div class="form-actions">
               <!-- ルーティングを記述 -->
-        <h6><%= link_to "=>パスワードを忘れた方はこちら", class: "col-xs-offset-left4" %></h6>
+        <h6><%= link_to "=>パスワードを忘れた方はこちら", new_user_password_path, class: "col-xs-offset-left4" %></h6>
         <%= f.button :submit, "ログイン", class: "btn btn-primary" %>
       </div>
       <% end %>
