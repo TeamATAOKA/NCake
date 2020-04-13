@@ -45,12 +45,11 @@
       </div>
       <div>
       <% if @user.id == current_user.id %>
-              <td><%= link_to "変更内容を保存する", edit_user_path(@user), class:"btn btn-defoult" %></td>
-              <td><%= link_to 'Destroy', user_path(@user), method: :delete, class:"btn btn-danger", data: { confirm: '本当に消しますか？' } %></td>
-              <% end %>
+      <%= link_to "変更内容を保存する", edit_user_path(@user), class: "btn btn-primary" %>
+      <%= link_to "退会する", users_withdrawal_path(current_user), class: "btn btn-danger" %>
+      <% end %>
       <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
