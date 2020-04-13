@@ -39,6 +39,11 @@ class OrdersController < ApplicationController
                 session[:order][:name] = params[:new_name]
                 session[:order][:postcode] = params[:new_postcode]
                 session[:order][:address] = params[:new_address]
+                #住所登録用のsession[:post]を生成
+                session[:post] = Post.new
+                session[:post][:name] = params[:new_name]
+                session[:post][:postcode] = params[:new_postcode]
+                session[:post][:address] = params[:new_address]
         end
       redirect_to confirm_orders_path
   end
@@ -57,7 +62,26 @@ class OrdersController < ApplicationController
   def done
       order = Order.new(session[:order])
       order.user_id = current_user.id
-      order.save
+      if order.save
+        #住所を新規入力した場合、住所を保存する
+        if session[:addresses].to_i == 3
+          post = Post.new(session[:post])
+          post.user_id = current_user.id
+          post.save
+        end
+        #カートアイテムを注文商品に登録する
+        current_user.cart_items.each do |cart_item|
+          order_items = OrderItem.new
+          order_items.sale_price = cart_item.item.price
+          order_items.item_count = cart_item.item_count
+          order_items.item_id = cart_item.item.id
+          order_items.order_id = order.id
+          order_items.save
+        end
+
+        #カートの中身を空にする
+        User.find(current_user.id).cart_items.destroy_all
+      end
   end
 
 
