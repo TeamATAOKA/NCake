@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
     <h3>注文履歴詳細</h3>
     <h4>注文情報</h4>
     <table class="table">
+    <div class="col-xs-8">
 		<tr>
 			<th>注文日</th>
-			<th><%= @order.created_at %></th>
+			<th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
 		</tr>
 	    <tr>
 			<th>配送先</th>
@@ -22,7 +22,7 @@
 			<th>ステータス</th>
 			<th><%= @order.order_status %></th>
 		</tr>
-
+	</div>
 	</table>
 	<div class="price-detail" style="float: right;">
 	<h4>請求情報</h4>
@@ -37,7 +37,7 @@
 	</tr>
 	<tr>
       <th>ご請求額</th>
-      <th><%= ＠order.total_price %></th>
+      <th><%#= ＠order.total_price %></th>
     </tr>
     </table>
     </div>
@@ -53,12 +53,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<td><%= @item.name %></td>
-			<td><%= @order_item.sale_price %></td>
-		    <td><%= @order_item.item_count %></td>
-		    <td><%= (@order_item.item_count * @order_item.sale_price * 1.08).to_i %></td>
+			<td><%#= @item.name %></td>
+			<td><%#= @order_item.sale_price %></td>
+		    <td><%#= @order_item.item_count %></td>
+		    <td><%#= (@order_item.item_count * @order_item.sale_price * 1.08).to_i %></td>
 		</tbody>
     </table>
-  </div>
   </div>
 </div>
