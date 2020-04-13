@@ -26,10 +26,21 @@
     </tbody>
 	</table>
 	<div class="total_price" style="float: right;">
-	<p>送料<%= session[:order][:postage] %></p>
-	<p>商品合計<%= (@sum).to_i %></p>
-    <p>請求金額<%= (@sum + session[:order][:postage]).to_i %></p>
+    <table>
+    <tr>
+	  <th>送料</th>
+	  <th><%= session[:order][:postage] %></th>
+	</tr>
+	<tr>
+	  <th>商品合計</th>
+	  <th><%= (@sum).to_i %></th>
+	</tr>
+	<tr>
+      <th>請求金額</th>
+      <th><%= (@sum + session[:order][:postage]).to_i %></th>
+    </tr>
     <% session[:order][:total_price] = @sum + session[:order][:postage].to_i %>
+    </table>
     </div>
 	<table>
 		<thead>
