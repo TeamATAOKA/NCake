@@ -16,26 +16,24 @@ Rails.application.routes.draw do
     end
     resources :posts
   end
-    resources :orders, only: [:index, :show, :new, :create] do
-    collection do
-        get :confirm
-        get :done
-      end
-    end
-      namespace :admin do
-        resources :users, only: [:index, :show, :edit, :update]
-        resources :orders, only: [:index, :show, :update]
-        resources :order_items, only: [:update]
-      end
 
-  resources :items, only: [:index, :show]
-    namespace :admin do
-      resources :items, only: [:index, :show, :new, :create, :edit, :update]
+  resources :orders, only: [:index, :show, :new, :create] do
+    collection do
+      get :confirm
+      get :done
     end
+  end
+
+
   namespace :admin do
-    resources :orders, only: [:index]
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
+    resources :order_items, only: [:update]
+    resources :items, only: [:index, :show, :new, :create, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
+
+  resources :items, only: [:index, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

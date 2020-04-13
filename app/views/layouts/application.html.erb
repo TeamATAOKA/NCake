@@ -40,7 +40,7 @@
   <!-- お客さんのヘッダー-->
         <% elsif user_signed_in? %>
 
-        <p class="navbar-text" style="font-size: 20px; font-family: Hannari;">ようこそ  <%= current_user.first_name %>  さん。</p>
+        <p class="navbar-text" style="font-size: 20px; font-family: Hannari;">ようこそ  <%= current_user.name %>  さん。</p>
 
         <li><%= link_to "マイページ", user_path(current_user.id) %></li>
 

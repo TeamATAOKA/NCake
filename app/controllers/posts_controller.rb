@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
       @post = Post.new
       @user = current_user
-      @posts = @user.post
+      @posts = @user.posts
   end
 
   def edit

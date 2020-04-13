@@ -5,15 +5,15 @@
 
 	<h2>登録情報</h2>
 <%= link_to '編集する',edit_user_path(@user),class: "btn btn-primary"%>
-<%=  link_to 'パスワードを変更',new_user_password_path ,class: "btn btn-primary"%>
+<%=  link_to 'パスワードを変更', edit_user_password_path ,class: "btn btn-primary"%>
 
 	<table class="table">
 		<thead>
 			<tr>
-				 <th>氏名</th><td><%= @user.first_name %></td>
+				 <th>氏名</th><td><%= @user.name %></td>
 			</tr>
 			<tr>
-				<th>フリガナ</th><td><%= @user.first_name_kana %></td>
+				<th>フリガナ</th><td><%= @user.name_kana %></td>
 			</tr>
 			<tr>
 				<th>郵便番号</th><td><%= @user.postcode %></td>
@@ -30,8 +30,8 @@
 		</thead>
 	</table>
 
-	<h2>配送先</h2><%= link_to '一覧を見る', user_posts_path(@user),class: "btn btn-primary"%>
-	<h2>注文履歴一覧</h2><%= link_to '一覧を見る', orders_path(@user),class: "btn btn-primary" %>
+	<h2>配送先</h2><%= link_to '一覧を見る', user_posts_path(current_user.id), class: "btn btn-primary"%>
+	<h2>注文履歴一覧</h2><%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %>
 
 </body>
   </div>
