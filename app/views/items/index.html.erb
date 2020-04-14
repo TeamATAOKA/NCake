@@ -4,9 +4,11 @@
       <h3>ジャンル</h3>
       <table class="table">
         <% @genres.each do |genre| %>
+        <% if genre.genre_status == '有効' %>
         <tr>
           <td><%= genre.genre_name %></td>
         </tr>
+        <% end %>
         <% end %>
       </table>
     </div>
@@ -16,6 +18,7 @@
        <h2>商品一覧(全<%= @items.count %>)件</h2>
        <div class="row">
          <% @items.each do |item| %>
+         <% if item.sale_status == '販売中' %>
          <div class="col-xs-3">
            <tr>
             <td><%= link_to item_path(item.id) do %>
@@ -26,6 +29,7 @@
             <td>¥<%= item.price %></td>
           </tr>
         </div>
+        <% end %>
         <% end %>
       </div>
     </table>

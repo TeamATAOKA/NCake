@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+  before_action :ensure_correct_user, only:[:index, :show]
   def index
       @user = current_user
       @orders = @user.orders
@@ -87,5 +88,14 @@ class OrdersController < ApplicationController
       end
   end
 
+  private
 
+  def ensure_correct_user
+      if user_signed_in?
+        user = User.find(params[:id])
+        if current_user.id !=  user.id
+          redirect_to root_path
+        end
+      end
+  end
 end

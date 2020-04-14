@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :admin_user
   def index
       @items = Item.page(params[:page]).reverse_order.per(5)
   end
@@ -32,5 +33,11 @@ class Admin::ItemsController < ApplicationController
   private
     def item_params
         params.require(:item).permit(:name, :sale_status, :image, :text, :price, :genre_id)
+    end
+
+    def admin_user
+      unless admin_signed_in?
+        redirect_to root_path
+      end
     end
 end

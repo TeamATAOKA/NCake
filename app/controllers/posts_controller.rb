@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+
+  before_action :ensure_correct_user
   def index
       @post = Post.new
       @user = current_user
@@ -36,5 +38,14 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:user_id, :name, :postcode, :address)
+    end
+
+    def ensure_correct_user
+      if user_signed_in?
+        user = User.find(params[:id])
+        if current_user.id !=  user.id
+          redirect_to root_path
+        end
+      end
     end
 end

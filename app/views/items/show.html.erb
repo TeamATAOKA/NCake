@@ -4,9 +4,11 @@
       <h3>ジャンル</h3>
       <table class="table">
         <% @genres.each do |genre| %>
+        <% if genre.genre_status == '有効' %>
         <tr>
           <td><%= genre.genre_name %></td>
         </tr>
+        <% end %>
         <% end %>
       </table>
     </div>
