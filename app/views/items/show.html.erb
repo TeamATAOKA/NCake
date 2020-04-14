@@ -31,7 +31,7 @@
        <% if user_signed_in? %>
        <th><%= form_for @cart_item, url: user_cart_items_path(@user, @cart_item.id) do |f| %>
           <%= f.hidden_field :item_id, :value => @item.id %>
-          <%= f.label :item_id %>
+        個数
         <%= f.select :item_count,options_for_select((1..10)), class: "btn btn-info" %>
         <%= f.submit "カートに入れる", class: "btn btn-primary" %>
       </div>

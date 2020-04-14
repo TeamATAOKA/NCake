@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :ensure_correct_user, only:[:index, :show]
+  before_action :ensure_correct_user, only:[:show]
   def index
       @user = current_user
       @orders = @user.orders
