@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
   get 'users/withdrawal', to: 'users#withdrawal'
+  put "/users/:id/hide" => "users#hide", as: 'users_hide'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users,  only: [:edit, :show, :update] do
     resources :order_items, only: [:create]
