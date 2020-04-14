@@ -15,7 +15,12 @@ class User < ApplicationRecord
     first_name_kana + last_name_kana
   end
 
+  def active_for_authentication?
+    super && (self.deleted_at == false)
+  end
+
   #会員ステータスのデフォルト値を設定
   attribute :user_status, :string, default: '有効'
+  attribute :deleted_at, :boolean, default: 'false'
 
 end
