@@ -12,9 +12,8 @@
     <% end %>
 
       <h2>登録情報編集</h2>
-
-    <table class="table">
     <%= form_for @user, url: user_path(@user) do |f| %>
+    <table class="table">
 
       <div class="field">
         <tr>
@@ -58,7 +57,7 @@
           <th><%= f.submit "変更内容を保存する", class: "btn btn-primary" %></th>
           <th><%= link_to "退会する", users_withdrawal_path(current_user), class: "btn btn-danger" %></th>
          </tr>
-    <% end %>
     </table>
+    <% end %>
   </div>
 </div>
