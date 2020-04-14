@@ -10,46 +10,55 @@
       </ul>
     </div>
     <% end %>
-    <div class="">
 
       <h2>登録情報編集</h2>
 
+    <table class="table">
+    <%= form_for @user, url: user_path(@user) do |f| %>
 
-      <%= form_for(@user) do |f| %>
-
       <div class="field">
-        <%= f.label :名前 %>
-        (姓)<%= f.text_field :first_name %>
-        (名)<%= f.text_field :last_name %>
-      </div>
-      <div class="field">
-        <%= f.label :フリガナ %>
-        (セイ)<%= f.text_field :first_name_kana %>
-        (メイ)<%= f.text_field :last_name_kana %>
+        <tr>
+          <th><%= f.label :名前 %></th>
+          <th>(姓)<%= f.text_field :first_name %></th>
+          <th>(名)<%= f.text_field :last_name %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :メールアドレス %>
-        <%= f.text_area :email %>
+        <tr>
+        <th><%= f.label :フリガナ %></th>
+          <th>(セイ)<%= f.text_field :first_name_kana %></th>
+          <th>(メイ)<%= f.text_field :last_name_kana %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :郵便番号 %>
-        <%= f.text_area :postcode %>
+        <tr>
+          <th><%= f.label :メールアドレス %></th>
+          <th><%= f.email_field :email %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :住所 %>
-        <%= f.text_area :address %>
+        <tr>
+          <th><%= f.label :郵便番号 %></th>
+          <th><%= f.text_field :postcode %></th>
+        </tr>
       </div>
       <div class="field">
-        <%= f.label :電話番号 %>
-        <%= f.text_area :phone_number %>
+        <tr>
+          <th><%= f.label :住所 %></th>
+          <th><%= f.text_field :address, class: "col-xs-12" %></th>
+        </tr>
       </div>
-      <div>
-      <% if @user.id == current_user.id %>
-      <%= link_to "変更内容を保存する", edit_user_path(@user), class: "btn btn-primary" %>
-      <%= link_to "退会する", users_withdrawal_path(current_user), class: "btn btn-danger" %>
-      <% end %>
-      <% end %>
+      <div class="field">
+        <tr>
+          <th><%= f.label :電話番号 %></th>
+          <th><%= f.text_field :phone_number %></th>
+        </tr>
       </div>
-    </div>
+        <tr>
+          <th><%= f.submit "変更内容を保存する", class: "btn btn-primary" %></th>
+          <th><%= link_to "退会する", users_withdrawal_path(current_user), class: "btn btn-danger" %></th>
+         </tr>
+    <% end %>
+    </table>
   </div>
 </div>

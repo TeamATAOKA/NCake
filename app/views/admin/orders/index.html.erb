@@ -17,12 +17,17 @@
 			<tr>
 			  <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order.id) %></td>
 			  <td><%= order.user.name %></td>
-			  <td><%#= @order_item.item_count %></td>
+              <% @sum = 0 %>
+			  <% order.order_item.each do |order_item| %>
+			  <% @sum += order_item.item_count %>
+			  <% end %>
+			  <td><%= (@sum).to_i %></td>
 			  <td><%= order.order_status %></td>
 			</tr>
 		  <% end %>
 		</tbody>
 	  </table>
+	  <%= paginate @orders, class: "pagenate" %>
 	</div>
   </div>
 </div>

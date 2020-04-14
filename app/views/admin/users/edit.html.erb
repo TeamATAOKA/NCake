@@ -31,6 +31,12 @@
       </div>
       <div class="field">
         <tr>
+          <th><%= f.label :電話番号 %></th>
+          <th><%= f.text_field :phone_number %></th>
+        </tr>
+      </div>
+      <div class="field">
+        <tr>
           <th><%= f.label :郵便番号 %></th>
           <th><%= f.text_field :postcode %></th>
         </tr>
@@ -38,19 +44,13 @@
       <div class="field">
         <tr>
           <th><%= f.label :住所 %></th>
-          <th><%= f.text_field :address %></th>
-        </tr>
-      </div>
-      <div class="field">
-        <tr>
-          <th><%= f.label :電話番号 %></th>
-          <th><%= f.text_field :phone_number %></th>
+          <th><%= f.text_field :address, class: "col-xs-12" %></th>
         </tr>
       </div>
       <div class="field">
         <tr>
           <th><%= f.label :メールアドレス %></th>
-          <th><%= f.email_field :email %></th>
+          <th><%= f.email_field :email, class: "col-xs-12" %></th>
         </tr>
       </div>
       <div class="field">
