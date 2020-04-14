@@ -37,7 +37,7 @@
 	</tr>
 	<tr>
       <th>ご請求額</th>
-      <th><%#= ＠order.total_price %></th>
+      <th><%= @order.total_price %></th>
     </tr>
     </table>
     </div>
@@ -53,10 +53,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<td><%#= @item.name %></td>
-			<td><%#= @order_item.sale_price %></td>
-		    <td><%#= @order_item.item_count %></td>
-		    <td><%#= (@order_item.item_count * @order_item.sale_price * 1.08).to_i %></td>
+			<% @order.order_item.each do |order_item| %>
+          <tr>
+			<td><%= order_item.item.name %></td>
+			<td><%= order_item.sale_price %></td>
+		    <td><%= order_item.item_count %></td>
+		    <td><%= (order_item.item_count * order_item.sale_price * 1.08).to_i %></td>
+		  </tr>
+		    <% end %>
 		</tbody>
     </table>
   </div>

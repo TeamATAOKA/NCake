@@ -17,14 +17,14 @@
 		  <% @users.each do |user| %>
 			<tr>
 			  <td><%= user.id %></td>
-			  <td><%= link_to user.first_name, admin_user_path(user.id) %></td>
+			  <td><%= link_to user.name, admin_user_path(user.id) %></td>
 			  <td><%= user.email %></td>
 			  <td><%= user.user_status %></td>
 			</tr>
 		  <% end %>
-		  <%#= paginate @users, class: "pagenate" %>
 		</tbody>
 	  </table>
+	  <%= paginate @users, class: "pagenate" %>
 	</div>
   </div>
 </div>

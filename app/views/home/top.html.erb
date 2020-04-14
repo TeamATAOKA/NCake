@@ -28,7 +28,7 @@
         <h4>オススメ商品</h4>
         <div class="row">
           <tbody>
-            <% @items.each do |item| %>
+            <% @items.last(3).each do |item| %>
               <div class="col-xs-4">
               <%= attachment_image_tag item, :image, :fill,100,100,fallback: "no_image.jpg" %><br>
               <%= item.name %><br>
