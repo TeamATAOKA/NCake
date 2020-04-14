@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #↓deleted_atカラムにフラグを立てる（デフォルトはfalse)
     @user.update(deleted_at: true)
+    @user.update(user_status: '退会済')
     #↓ログアウトさせる
     reset_session
     redirect_to root_path
