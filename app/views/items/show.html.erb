@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-      <h4>ジャンル検索</h4>
+      <h3>ジャンル</h3>
       <table class="table">
         <% @genres.each do |genre| %>
         <tr>
@@ -22,7 +22,7 @@
         <th><%= @item.text %></th>
       </tr>
       <tr>
-        <!--　税込にする計算式を記述 -->
+        <!-- 税込にする計算式を記述 -->
         <th><%= @item.price %>(税込)</th>
       </tr>
       <tr>

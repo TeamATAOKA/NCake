@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-      <h2>ジャンル検索</h2>
+      <h3>ジャンル</h3>
       <table class="table">
         <% @genres.each do |genre| %>
         <tr>
@@ -29,7 +29,7 @@
         <% end %>
       </div>
     </table>
+    <%= paginate @items, class: "pagenate" %>
   </div>
 </div>
 </div>
-       <%#= paginate @items, class: "pagenate" %>
